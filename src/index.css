@@ -1,13 +1,23 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App{
+  height: 100VH;
+  width: 100VW;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Tictactoe{
+  height: 21rem;
+  width: 21rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Tictactoe > div{
+  height: 6.8rem;
+  width: 6.8rem;
+  border: 1px solid black;
+  font-size: 5rem;
+  text-align: center;
 }
