@@ -11,36 +11,41 @@ const togglePlayer = () => {
 let isGameValid = true;
 function App() {
   const [state, setState] = useState([
-    { id: 0, val: " " },
-    { id: 1, val: " " },
-    { id: 2, val: " " },
-    { id: 3, val: " " },
-    { id: 4, val: " " },
-    { id: 5, val: " " },
-    { id: 6, val: " " },
-    { id: 7, val: " " },
-    { id: 8, val: " " },
+    { id: 0, val: 0 },
+    { id: 1, val: 1 },
+    { id: 2, val: 2 },
+    { id: 3, val: 3 },
+    { id: 4, val: 4 },
+    { id: 5, val: 5 },
+    { id: 6, val: 6 },
+    { id: 7, val: 7 },
+    { id: 8, val: 8 },
   ]);
   const [status, setStatus] = useState("Game started");
   const checkForComplete = () => {
-    return !(state.find((el) => el.val === "") === ;
+    for (let el of state) {
+      if (Number.isInteger(el.val)) {
+        return false;
+      }
+    }
+    return true;
   };
   const checkForWin = () => {
     if (
-      (state[0] === state[1] && state[1] === state[2]) ||
-      (state[3] === state[4] && state[4] === state[5]) ||
-      (state[6] === state[7] && state[7] === state[8])
+      (state[0].val === state[1].val && state[1].val === state[2].val) ||
+      (state[3].val === state[4].val && state[4].val === state[5].val) ||
+      (state[6].val === state[7].val && state[7].val === state[8].val)
     ) {
       return true;
     } else if (
-      (state[0] === state[3] && state[3] === state[6]) ||
-      (state[1] === state[4] && state[4] === state[7]) ||
-      (state[2] === state[5] && state[5] === state[8])
+      (state[0].val === state[3].val && state[3].val === state[6].val) ||
+      (state[1].val === state[4].val && state[4].val === state[7].val) ||
+      (state[2].val === state[5].val && state[5].val === state[8].val)
     ) {
       return true;
     } else if (
-      (state[0] === state[4] && state[4] === state[8]) ||
-      (state[2] === state[4] && state[4] === state[6])
+      (state[0].val === state[4].val && state[4].val === state[8].val) ||
+      (state[2].val === state[4].val && state[4].val === state[6].val)
     ) {
       return true;
     } else {
@@ -49,7 +54,7 @@ function App() {
   };
 
   const playMove = function (e, el) {
-    if (!el.val && isGameValid) {
+    if (Number.isInteger(el.val) && isGameValid) {
       let current = [...state];
       current[el.id].val = players[turn];
       setState(current);
@@ -75,7 +80,7 @@ function App() {
       <div className="Tictactoe">
         {state.map((el) => (
           <div onClick={(e) => playMove(e, el)} key={el.id}>
-            {el.val}
+            {Number.isInteger(el.val) === false ? el.val : ""}
           </div>
         ))}
       </div>
